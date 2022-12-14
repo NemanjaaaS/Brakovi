@@ -8,10 +8,9 @@ import java.util.TreeMap;
 
 public class StableMarriage {
 
-    private static Map<String,String> match(List<String> guys, Map<String,List<String>> guysRang,
-                                            Map<String,List<String>> girlsRang){
-        Map<String, String> engagedTo = new TreeMap<String, String>();
-        List<String> freeGuys = new LinkedList<String>();
+    public static Map<String,String> match(List<String> guys, Map<String, List<String>> guysRang, Map<String, List<String>> girlsRang){
+        Map<String, String> engagedTo = new TreeMap<>();
+        List<String> freeGuys = new LinkedList<>();
         freeGuys.addAll(guys);
 
         while(!freeGuys.isEmpty()){
@@ -38,7 +37,7 @@ public class StableMarriage {
     }
 
 
-    private static boolean checkMatches(List<String> guys, List<String> girls,
+    public static boolean checkMatches(List<String> guys, List<String> girls,
                                         Map<String, String> matches, Map<String, List<String>> guyPrefers,
                                         Map<String, List<String>> girlPrefers) {
         if(!matches.keySet().containsAll(girls)){
@@ -67,10 +66,10 @@ public class StableMarriage {
                 List<String> thisGuyPrefers = guyPrefers.get(guy);
                 if(thisGuyPrefers.indexOf(guysFinace) >
                         thisGuyPrefers.indexOf(couple.getKey())){
-                    System.out.printf("%s likes %s better than %s and %s"
-                                    + " likes %s better than their current partner\n",
-                            couple.getKey(), guy, couple.getValue(),
-                            guy, couple.getKey());
+//                    System.out.printf("%s likes %s better than %s and %s"
+//                                    + " likes %s better than their current partner\n",
+//                            couple.getKey(), guy, couple.getValue(),
+//                            guy, couple.getKey());
                     return false;
                 }
             }
@@ -80,10 +79,10 @@ public class StableMarriage {
                 List<String> thisGirlPrefers = girlPrefers.get(girl);
                 if(thisGirlPrefers.indexOf(girlsFinace) >
                         thisGirlPrefers.indexOf(couple.getValue())){
-                    System.out.printf("%s likes %s better than %s and %s"
-                                    + " likes %s better than their current partner\n",
-                            couple.getValue(), girl, couple.getKey(),
-                            girl, couple.getValue());
+//                    System.out.printf("%s likes %s better than %s and %s"
+//                                    + " likes %s better than their current partner\n",
+//                            couple.getValue(), girl, couple.getKey(),
+//                            girl, couple.getValue());
                     return false;
                 }
             }
