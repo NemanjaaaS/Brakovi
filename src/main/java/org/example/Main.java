@@ -13,29 +13,30 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        String guysPath = "src/main/java/files/guys.txt";
-        String girlsPath = "src/main/java/files/girls.txt";
+        String guysPath = "src/main/java/files/guysRang.txt";
+        String girlsPath = "src/main/java/files/girlsRang.txt";
         String result = "src/main/java/files/result.txt";
+        String parovi = "src/main/java/files/guysAndGirls.txt";
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Unesite broj parova: ");
+        //System.out.println("Unesite broj parova: ");
 
-        int brParova = sc.nextInt();
+        //int brParova = sc.nextInt();
 
 
         ReadFromFile rf = new ReadFromFile();
-        ReadFromFile rf2 = new ReadFromFile();
-        rf.readFromFile(guysPath,brParova);
+       // ReadFromFile rf2 = new ReadFromFile();
+        rf.readFromFile(guysPath,girlsPath,parovi);
 
-       // System.out.println("GUYS RANG "+rf.getGuysRang());
-        rf2.readFromFile(girlsPath,brParova);
+        // System.out.println("GUYS RANG "+rf.getGuysRang());
+       // rf2.readFromFile(girlsPath,brParova);
 
-       // System.out.println("GIRLS RANG "+rf2.getGirlsRang());
-       // System.out.println("GUYS print "+rf.getGuys());
+        // System.out.println("GIRLS RANG "+rf2.getGirlsRang());
+        // System.out.println("GUYS print "+rf.getGuys());
         StableMarriage st = new StableMarriage();
         BufferedWriter bw = new BufferedWriter(new FileWriter(result));
 
-        Map<String, String> matches = st.match(rf.getGuys(), rf.getGuysRang(), rf2.getGirlsRang());
+        Map<String, String> matches = st.match(rf.getGuys(), rf.getGuysRang(), rf.getGirlsRang());
         for(Map.Entry<String, String> couple:matches.entrySet()){
             System.out.println(
                     couple.getKey() + " is engaged to " + couple.getValue());
@@ -43,7 +44,7 @@ public class Main {
             bw.write(""+couple.getValue()+","+couple.getKey()+"\n");
         }
 
-        if(st.checkMatches(rf.getGuys(), rf2.getGirls(), matches, rf.getGuysRang(),rf2.getGirlsRang())){
+        if(st.checkMatches(rf.getGuys(), rf.getGirls(), matches, rf.getGuysRang(),rf.getGirlsRang())){
             System.out.println("Marriages are stable");
             bw.write("Marriages are stable");
         }else{

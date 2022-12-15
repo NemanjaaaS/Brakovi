@@ -37,9 +37,7 @@ public class StableMarriage {
     }
 
 
-    public static boolean checkMatches(List<String> guys, List<String> girls,
-                                        Map<String, String> matches, Map<String, List<String>> guyPrefers,
-                                        Map<String, List<String>> girlPrefers) {
+    public static boolean checkMatches(List<String> guys, List<String> girls, Map<String, String> matches, Map<String, List<String>> guyPrefers, Map<String, List<String>> girlPrefers) {
         if(!matches.keySet().containsAll(girls)){
             return false;
         }
@@ -77,8 +75,7 @@ public class StableMarriage {
             for(String girl : heLikesBetter){
                 String girlsFinace = matches.get(girl);
                 List<String> thisGirlPrefers = girlPrefers.get(girl);
-                if(thisGirlPrefers.indexOf(girlsFinace) >
-                        thisGirlPrefers.indexOf(couple.getValue())){
+                if(thisGirlPrefers.indexOf(girlsFinace) > thisGirlPrefers.indexOf(couple.getValue())){
 //                    System.out.printf("%s likes %s better than %s and %s"
 //                                    + " likes %s better than their current partner\n",
 //                            couple.getValue(), girl, couple.getKey(),

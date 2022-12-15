@@ -5,37 +5,39 @@ import java.lang.reflect.Array;
 import java.util.*;
 
 public class ReadFromFile {
-    List<String> guysAll = new ArrayList<String>();
-     List<String> girlsAll = new ArrayList<String>();
+    List<String> guysAll = new ArrayList<>();
+    List<String> girlsAll = new ArrayList<>();
+    List<String> paroviList = new ArrayList<>();
 
-    List<String> guys = new ArrayList<String>();
-     List<String> girls = new ArrayList<String>();
+    List<String> guys = new ArrayList<>();
+    List<String> girls = new ArrayList<>();
 
-    List<String> guysGirls = new ArrayList<String>();
+    List<String> guysGirls = new ArrayList<>();
 
-    Map<String,List<String>> guysRang = new HashMap<String, List<String>>();
-    Map<String,List<String>> girlsRang = new HashMap<String, List<String>>();
-    List<String> girlsGuys = new ArrayList<String>();
+    Map<String,List<String>> guysRang = new HashMap<>();
+    Map<String,List<String>> girlsRang = new HashMap<>();
+    List<String> girlsGuys = new ArrayList<>();
 
 
 
-    public void readFromFile(String gPath,int brParova) throws IOException {
+    public void readFromFile(String gPath,String girlsPath,String parovi) throws IOException {
         List<String> result = new ArrayList<String>();
 
         File guysFile = new File(gPath);
-        File girlsFile = new File(gPath);
+        File girlsFile = new File(girlsPath);
+        File paroviFile = new File(parovi);
         BufferedReader brGuys = new BufferedReader(new FileReader(guysFile));
         BufferedReader brGirls = new BufferedReader(new FileReader(girlsFile));
+        BufferedReader paroviBr = new BufferedReader(new FileReader(paroviFile));
 
 
 
-       // Scanner sc = new Scanner(System.in);
+        // Scanner sc = new Scanner(System.in);
 
-       // System.out.println("Unesite broj parova: ");
+        // System.out.println("Unesite broj parova: ");
 
-       // int brParova = sc.nextInt();
+        // int brParova = sc.nextInt();
 
-        System.out.println(brParova);
         int counter = 0;
 
         while(brGuys.ready()){
@@ -43,6 +45,12 @@ public class ReadFromFile {
             girlsAll.add(brGirls.readLine());
             counter++;
         }
+        while(paroviBr.ready()){
+            paroviList.add(paroviBr.readLine());
+        }
+        int brParova = paroviList.size()/2;
+
+        System.out.println(brParova);
 
         for(int i = 0;i<brParova;i++){
             guys.add(guysAll.get(i));
@@ -55,26 +63,25 @@ public class ReadFromFile {
 
 
 
-        for(int i = brParova;i<brParova*brParova+brParova;i++){
+        for(int i = brParova;i<guysAll.size();i++){
             guysGirls.add(guysAll.get(i));
             girlsGuys.add(girlsAll.get(i));
         }
 
-        //System.out.println(guysAll);
-        //System.out.println(girlsAll);
+        System.out.println(guysAll);
+        System.out.println(girlsAll);
+        System.out.println(guysGirls);
+        System.out.println(girlsGuys);
 
 
-int temp = 0;
+        int temp = 0;
         for(int i = 0;i<brParova;i++){
             guysRang.put(guys.get(i),guysGirls.subList(temp,temp+brParova));
             girlsRang.put(girls.get(i),girlsGuys.subList(temp,temp+brParova));
             temp = temp+brParova;
         }
-
-       // System.out.println(guysRang);
-       // System.out.println(girlsRang);
-
-
+        // System.out.println(guysRang);
+        // System.out.println(girlsRang);
     }
 
     public List<String> getGuys(){
