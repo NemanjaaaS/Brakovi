@@ -1,5 +1,47 @@
+Boban,Dunja
+Filip,Jagoda
+Momcilo,Marija
+Lazar,Visnja
+Marriages are stable
+Stojan,Marija
+Milan,Milica
+Petar,Sofija
+Stefan,Jelena
+Marriages are stable
+Boban,Dunja
+Filip,Jagoda
+Momcilo,Marija
+Lazar,Visnja
+Marriages are stable
+Milos,Milena
+Jovan,Teodora
+Aleksa,Kristina
+Marriages are stable
+Aleksa,Kristina
+Milos,Milena
+Jovan,Teodora
+Marriages are stable
+Boban,Dunja
+Filip,Jagoda
+Momcilo,Marija
+Lazar,Visnja
+Marriages are stable
 Stefan,Jelena
 Stojan,Marija
 Milan,Milica
 Petar,Sofija
+Marriages are stable
+Milos,Milena
+Jovan,Teodora
+Aleksa,Kristina
+Marriages are stable
+Boban,Dunja
+Filip,Jagoda
+Momcilo,Marija
+Lazar,Visnja
+Marriages are stable
+Stojan,Marija
+Milan,Milica
+Petar,Sofija
+Stefan,Jelena
 Marriages are stable

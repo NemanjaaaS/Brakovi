@@ -1,0 +1,18 @@
+Boban,Dunja
+Filip,Jagoda
+Momcilo,Marija
+Lazar,Visnja
+Marriages are stableBoban,Dunja
+Filip,Jagoda
+Momcilo,Marija
+Lazar,Visnja
+Marriages are stable
+Stefan,Jelena
+Stojan,Marija
+Milan,Milica
+Petar,Sofija
+Marriages are stable
+Aleksa,Kristina
+Milos,Milena
+Jovan,Teodora
+Marriages are stable

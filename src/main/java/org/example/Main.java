@@ -2,6 +2,7 @@ package org.example;
 
 import rwFiles.ReadFromFile;
 import stableMarriage.StableMarriage;
+import workerThread.WorkerThread;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -9,59 +10,45 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Main {
+
+    static final int MAX_TH = 3;
     public static void main(String[] args) throws IOException {
 
         String guysPath = "src/main/java/files/guysRang.txt";
         String girlsPath = "src/main/java/files/girlsRang.txt";
         String result = "src/main/java/files/result.txt";
         String parovi = "src/main/java/files/guysAndGirls.txt";
-        Scanner sc = new Scanner(System.in);
 
-        //System.out.println("Unesite broj parova: ");
+        String guysPath2 = "src/main/java/files/guysRang2.txt";
+        String girlsPath2 = "src/main/java/files/girlsRang2.txt";
+       // String result2 = "src/main/java/files/result2.txt";
+        String parovi2 = "src/main/java/files/guysAndGirls2.txt";
 
-        //int brParova = sc.nextInt();
+        String guysPath3 = "src/main/java/files/guysRang3.txt";
+        String girlsPath3 = "src/main/java/files/girlsRang3.txt";
+        //String result3 = "src/main/java/files/result3.txt";
+        String parovi3 = "src/main/java/files/guysAndGirls3.txt";
+
+       // BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(result));
+        //bufferedWriter.write("");
 
 
-        ReadFromFile rf = new ReadFromFile();
-       // ReadFromFile rf2 = new ReadFromFile();
-        rf.readFromFile(guysPath,girlsPath,parovi);
+        Runnable rb1 = new WorkerThread(guysPath,girlsPath,parovi,result);
+        Runnable rb2 = new WorkerThread(guysPath2,girlsPath2,parovi2,result);
+        Runnable rb3 = new WorkerThread(guysPath3,girlsPath3,parovi3,result);
 
-        // System.out.println("GUYS RANG "+rf.getGuysRang());
-       // rf2.readFromFile(girlsPath,brParova);
+        ExecutorService pl = Executors.newFixedThreadPool(MAX_TH);
 
-        // System.out.println("GIRLS RANG "+rf2.getGirlsRang());
-        // System.out.println("GUYS print "+rf.getGuys());
-        StableMarriage st = new StableMarriage();
-        BufferedWriter bw = new BufferedWriter(new FileWriter(result));
+        pl.execute(rb1);
+        pl.execute(rb2);
+        pl.execute(rb3);
 
-        Map<String, String> matches = st.match(rf.getGuys(), rf.getGuysRang(), rf.getGirlsRang());
-        for(Map.Entry<String, String> couple:matches.entrySet()){
-            System.out.println(
-                    couple.getKey() + " is engaged to " + couple.getValue());
-            System.out.println(couple);
-            bw.write(""+couple.getValue()+","+couple.getKey()+"\n");
-        }
-
-        if(st.checkMatches(rf.getGuys(), rf.getGirls(), matches, rf.getGuysRang(),rf.getGirlsRang())){
-            System.out.println("Marriages are stable");
-            bw.write("Marriages are stable");
-        }else{
-            System.out.println("Marriages are unstable");
-            bw.write("Marriages are unstable");
-        }
-        bw.close();
-//        String tmp = matches.get(rf2.getGirls().get(0));
-//        matches.put(rf2.getGirls().get(0), matches.get(rf2.getGirls().get(1)));
-//        matches.put(rf2.getGirls().get(1), tmp);
-//        System.out.println(
-//                rf2.getGirls().get(0) +" and " + rf2.getGirls().get(1) + " have switched partners");
-//        if(st.checkMatches(rf.getGuys(), rf2.getGirls(), matches, rf.getGuysRang(),rf2.getGirlsRang())){
-//            System.out.println("Marriages are stable");
-//        }else{
-//            System.out.println("Marriages are unstable");
-//        }
+        pl.shutdown();
 
     }
 }
