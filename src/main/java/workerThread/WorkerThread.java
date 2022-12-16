@@ -17,7 +17,6 @@ public class WorkerThread implements Runnable {
         this.parovi = paroviPath;
         this.result = result;
     }
-
     @Override
     public void run() {
         ReadFromFile rf = new ReadFromFile();

@@ -26,16 +26,12 @@ public class Main {
 
         String guysPath2 = "src/main/java/files/guysRang2.txt";
         String girlsPath2 = "src/main/java/files/girlsRang2.txt";
-       // String result2 = "src/main/java/files/result2.txt";
         String parovi2 = "src/main/java/files/guysAndGirls2.txt";
 
         String guysPath3 = "src/main/java/files/guysRang3.txt";
         String girlsPath3 = "src/main/java/files/girlsRang3.txt";
-        //String result3 = "src/main/java/files/result3.txt";
         String parovi3 = "src/main/java/files/guysAndGirls3.txt";
 
-       // BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(result));
-        //bufferedWriter.write("");
 
 
         Runnable rb1 = new WorkerThread(guysPath,girlsPath,parovi,result);
